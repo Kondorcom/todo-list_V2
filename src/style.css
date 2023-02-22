@@ -29,6 +29,11 @@ html {
     grid-template-columns: 1fr 7fr;
     grid-template-areas: "headerDiv headerDiv" "navDiv contentDiv" "footerDiv footerDiv";
 }
+h3 {
+    color: var(--navContentTextColor);
+    font-size: 24px;
+    font-weight: bold;
+}
 div {
     border: 1px solid black;
 }
@@ -38,20 +43,32 @@ div {
     display: flex;
     align-items: center;
     background-color: var(--headerFooterColor);
+    padding-left: 20px;
+    min-height: 100px;
 }
 .headerImgDiv {
-    width: 100px;
+    width: 50px;
+}
+.headerImg {
+    height: 50px;
+    width: 50px;
 }
 .headerTextContent {
     font-size: var(--headerFontSize);
     color: var(--headerFooterTextColor);
     font-weight: bold;
+    padding-left: 20px;
 }
 
 .navDiv {
     grid-area: navDiv;
     background-color: var(--navColor);
     min-width: 300px;
+    /* display: grid;
+    grid-template-rows: 1fr 1fr 1fr; */
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
 }
 
 .contentDiv {
@@ -66,4 +83,65 @@ div {
     justify-content: center;
     align-items: center;
     font-weight: bold;
+    min-height: 50px;
+}
+.navDivTimetable,
+.newProjectDiv {
+    display: flex;
+    flex-direction: column;
+}
+.navBtnContainer,
+.newProjUpperDiv {
+    display: flex;
+    align-items: center;
+}
+.navButtonText {
+    font-size: var(--navBtnFontSize);
+    padding-left: 15px;
+}
+.navBtnImgs,
+.newProjImg {
+    width: 35px;
+    height: 35px;
+}
+button {
+    border: none;
+    border-radius: 1rem;
+    background: none;
+    /* color: darkgreen; */
+    /* font-family: sans-serif; */
+    /* font-weight: bold; */
+    padding: 0.5rem;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #eae0d5;
+    border-radius: 10px;
+}
+.navProjects {
+    display: flex;
+    flex-direction: column;
+}
+.addProjBtn {
+    padding: 0 0.5rem 0 0.5rem;
+}
+.newProjectDiv {
+    padding: 0.5rem;
+}
+.newProjTextBox {
+    display: flex;
+    padding-left: 5px;
+    align-items: end;
+    background-color: var(--contentColor);
+    border-radius: 10px;
+    height: 25px;
+}
+.newProjImg {
+    padding-right: 10px;
+}
+.newProjLowerDiv {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    padding-right: 20px;
 }
