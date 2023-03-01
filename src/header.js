@@ -1,7 +1,7 @@
 import headerImgImport from "./pics/checkPic.svg";
 
 export default function createHeaderDiv() {
-    console.log("loading header 2");
+    //console.log("loading header 2");
     const headerDiv = document.createElement("div");
     headerDiv.classList.add("headerDiv");
 

@@ -21,6 +21,7 @@ html {
     --headerFooterTextColor: #c6ac8f;
     --navBtnFontSize: 18px;
     --headerFontSize: 40px;
+    --btnBorderRadius: 0.7rem;
 }
 .mainContent {
     height: 100%;
@@ -74,6 +75,26 @@ div {
 .contentDiv {
     grid-area: contentDiv;
     background-color: var(--contentColor);
+    display: flex;
+    justify-content: center;
+}
+.contentHeading {
+    width: 90%;
+    height: 80px;
+    background-color: var(--navColor);
+    margin-top: 20px;
+    border-radius: 0.7rem;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    justify-content: space-between;
+}
+.contentHeadingText,
+.contentHeadingDate {
+    color: var(--navContentTextColor);
+    font-size: var(--headerFontSize);
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .footerDiv {
@@ -100,33 +121,38 @@ div {
     padding-left: 15px;
 }
 .navBtnImgs,
-.newProjImg {
+.newProjImg,
+.newProjImgList {
     width: 35px;
     height: 35px;
 }
-button {
-    border: none;
-    border-radius: 1rem;
-    background: none;
-    /* color: darkgreen; */
-    /* font-family: sans-serif; */
-    /* font-weight: bold; */
-    padding: 0.5rem;
-    cursor: pointer;
+/* .newProjImg,
+.newProjImgList {
+    width: 25px;
+    height: 25px;
+} */
+.newProjImg {
+    padding-right: 10px;
 }
-button:hover {
-    background-color: #eae0d5;
-    border-radius: 10px;
+
+.newProjAddBtn,
+.newProjCancelBtn {
+    border: 2px solid black;
+    border-radius: var(--btnBorderRadius);
+    padding: 0.3rem 1rem 0.3rem 1rem;
 }
+
 .navProjects {
     display: flex;
     flex-direction: column;
+    gap: 5px;
 }
 .addProjBtn {
     padding: 0 0.5rem 0 0.5rem;
 }
 .newProjectDiv {
     padding: 0.5rem;
+    gap: 10px;
 }
 .newProjTextBox {
     display: flex;
@@ -136,12 +162,41 @@ button:hover {
     border-radius: 10px;
     height: 25px;
 }
-.newProjImg {
-    padding-right: 10px;
-}
+
 .newProjLowerDiv {
     display: flex;
     align-items: center;
     justify-content: end;
     padding-right: 20px;
+    gap: 5px;
+}
+.projectList {
+    display: flex;
+    flex-direction: column;
+}
+.projectListButton {
+    padding: 0 0.5rem 0 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.projLstBtnLeftDiv,
+.projLstBtnRightDiv {
+    display: flex;
+    align-items: center;
+}
+
+button {
+    border: none;
+    border-radius: var(--btnBorderRadius);
+    background: none;
+    /* color: darkgreen; */
+    /* font-family: sans-serif; */
+    /* font-weight: bold; */
+    padding: 0.5rem;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #eae0d5;
+    border-radius: var(--btnBorderRadius);
 }

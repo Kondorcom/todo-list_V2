@@ -3,7 +3,7 @@ import todayPic from "./pics/todayPic.svg";
 import weekPic from "./pics/weekPic.svg";
 import createProject from "./projects";
 export default function createNavDiv() {
-    console.log("loading nav div");
+    //console.log("loading nav div");
     const navDiv = document.createElement("div");
     navDiv.classList.add("navDiv");
 
@@ -47,7 +47,7 @@ function createNavDivTimetable() {
     const navDivTimetable = document.createElement("div");
     navDivTimetable.classList.add("navDivTimetable");
 
-    const inboxButton = createButton("inboxButton", "Inbox", inboxPic);
+    const inboxButton = createButton("inboxButton", "All tasks", inboxPic);
     const todayButton = createButton("todayButton", "Today", todayPic);
     const weekButton = createButton("weekButton", "This week", weekPic);
 
