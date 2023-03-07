@@ -36,7 +36,7 @@ h3 {
     font-weight: bold;
 }
 div {
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 
 .headerDiv {
@@ -76,7 +76,10 @@ div {
     grid-area: contentDiv;
     background-color: var(--contentColor);
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
 }
 .contentHeading {
     width: 90%;
@@ -97,6 +100,13 @@ div {
     padding-right: 20px;
 }
 
+.newDivTask {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .footerDiv {
     grid-area: footerDiv;
     background-color: var(--headerFooterColor);
@@ -112,9 +122,11 @@ div {
     flex-direction: column;
 }
 .navBtnContainer,
-.newProjUpperDiv {
+.newProjUpperDiv,
+.taskBtnContainer {
     display: flex;
     align-items: center;
+    /* width: 50%; */
 }
 .navButtonText {
     font-size: var(--navBtnFontSize);
@@ -180,10 +192,30 @@ div {
     align-items: center;
     justify-content: space-between;
 }
+
+.newTaskButton {
+    padding: 0 0.5rem 0 0.5rem;
+    display: block;
+    width: 100%;
+    text-align: center;
+    /* align-items: center; */
+}
 .projLstBtnLeftDiv,
 .projLstBtnRightDiv {
     display: flex;
     align-items: center;
+}
+/* .newTaskButton {
+    width: 100%;
+} */
+.formInputFields {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.taskFormButtons {
+    display: flex;
+    justify-content: center;
 }
 
 button {
@@ -200,3 +232,30 @@ button:hover {
     background-color: #eae0d5;
     border-radius: var(--btnBorderRadius);
 }
+
+.newTaskButton:hover,
+.taskSubmitButton:hover,
+.taskCancelButton:hover {
+    background-color: var(--headerFooterTextColor);
+    border-radius: var(--btnBorderRadius);
+}
+
+label {
+    color: var(--contentColor);
+    background-color: var(--headerFooterColor);
+}
+#taskForm {
+    /* display: flex;
+    flex-direction: column; */
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    background-color: var(--headerFooterColor);
+    border-radius: var(--btnBorderRadius);
+}
+.taskSubmitButton,
+.taskCancelButton {
+    color: var(--contentColor);
+    text-align: center;
+}
+/* #taskForm > label {
+    color: var(--contentColor);
+} */

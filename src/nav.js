@@ -23,7 +23,7 @@ export default function createNavDiv() {
     return navDiv;
 }
 
-function createButton(buttonName, buttonText, buttonImg) {
+export function createButton(buttonName, buttonText, buttonImg) {
     const newButton = document.createElement("button");
     newButton.classList.add(buttonName);
 

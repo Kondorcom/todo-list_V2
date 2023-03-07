@@ -1,12 +1,14 @@
 import plusPic from "./pics/plusPic.svg";
 import stripesPic from "./pics/threeHor.svg";
 import dotsPic from "./pics/threeVer.svg";
-import { newProjectClass } from "./projectClass";
+
 import currentDateLog from "./dateFunctions";
 import selectedProject from "./projectsList";
+import { newProjectClass } from "./projectClass";
+
 let newProjectBtnClicks = 0;
 let numberOfProjectsAdded = 0;
-
+export let projectsArray = [];
 export default function createProject() {
     const navProjects = document.createElement("div");
     navProjects.classList.add("navProjects");
@@ -43,7 +45,6 @@ function addProjectButton() {
 }
 
 function checkNumberNewProjectBtnClicks() {
-    console.log("check number of clicks");
     console.log("Clicked button times", newProjectBtnClicks);
     if (newProjectBtnClicks === 0) {
         addNewProject();
@@ -103,85 +104,24 @@ function cancelNewProject() {
 function removeElements(elementToRemove) {
     //remove element and children
     const elementsToRemove = document.getElementsByClassName(elementToRemove);
-
     while (elementsToRemove.length > 0) elementsToRemove[0].remove();
 }
+
 function addProject() {
     const inputProjectNameElement =
         document.getElementsByClassName("newProjTextBox")[0];
-
     if (isInputNotEmpty(inputProjectNameElement) === true) {
-        const currentDate = currentDateLog();
-        let noviProjekt = new newProjectClass(
-            inputProjectNameElement.value,
-            currentDate
+        projectList();
+        console.log("brojDodanihProj", numberOfProjectsAdded);
+        // const currentDate = currentDateLog();
+        window["project" + numberOfProjectsAdded] = new newProjectClass(
+            inputProjectNameElement.value
         );
-        // numberOfProjectsAdded++;
+        projectsArray.push(window["project" + numberOfProjectsAdded]);
+        // console.log("length of array", projectsArray.length);
         console.log("numberOfProjectsAdded", numberOfProjectsAdded);
         newProjectBtnClicks = 0;
-        projectList();
         removeElements("newProjectDiv");
-
-        const btns = document.querySelectorAll(".projectListButton");
-
-        const buttonPressed = (e) => {
-            console.log("target id ", e.target.id); // Get ID of Clicked Element
-
-            // console.log(e.target.projLstBtnLeftDiv.projLstNewProjectTxt.value);
-            selectedProject(e.target.id - 1);
-
-            // const selectedProjectName = document.getElementsByClassName(
-            //     "projLstNewProjectTxt"
-            // )[e.target.id - 1];
-            // console.log(selectedProjectName.innerText);
-        };
-        for (let btn of btns) {
-            btn.addEventListener("click", buttonPressed);
-        }
-        // for (let btn of btns) {
-        //     btn.addEventListener("click", buttonPressed);
-        // }
-
-        // let btns = document.querySelectorAll(".projectListButton");
-        // for (let i = 0; i < numberOfProjectsAdded; i++) {
-        //     btns[i].addEventListener("click", function () {
-        //         alert("hi");
-        //     });
-        // }
-
-        // let buttons1 = document.querySelectorAll(".projectListButton");
-        // buttons1.forEach((btn) => {
-        //     // btn.addEventListener("click", (event) => {
-        //     //     alert(event.target);
-        //     // });
-        //     // button[i].addEventListener("click", (e) => {
-        //     //     alert(button.indexOf(e.target));
-        //     // });
-        //     btn.addEventListener("click", (e) => {
-        //         alert(btn.indexOf(e.target));
-        //     });
-        // });
-
-        // btns[1].addEventListener("click", function () {
-        //     alert("hi");
-        // });
-
-        // btns.forEach((btn) => {
-        //     console.log(btn.value);
-        //     btn.addEventListener("click", console.log("namerrrr"));
-        // });
-        // selectedProject();
-
-        // const getSelectedProject =
-        //     document.getElementsByClassName("projectListButton")[
-        //         numberOfProjectsAdded - 1
-        //     ];
-        // console.log(getSelectedProject.value);
-        // getSelectedProject.addEventListener("click", console.log("stisnuo si"));
-        // getSelectedProject.addEventListener("click", selectedProject());
-        //noviProjekt.sayHi();
-
-        //noviProjekt.sayDate();
     }
 }
 
@@ -189,20 +129,18 @@ function projectList() {
     const getNavProjectsDiv = document.getElementsByClassName("navProjects")[0];
     const projectList = document.createElement("div");
     projectList.classList.add("projectList");
-
     const newProjListButton = projectListNewProjectBtn();
     projectList.appendChild(newProjListButton);
     getNavProjectsDiv.append(projectList);
-
     return getNavProjectsDiv;
 }
 
 function projectListNewProjectBtn() {
     const projectListButton = document.createElement("button");
     projectListButton.classList.add("projectListButton");
-
     numberOfProjectsAdded++;
     projectListButton.id = numberOfProjectsAdded;
+
     const projLstBtnLeftDiv = document.createElement("div");
     projLstBtnLeftDiv.classList.add("projLstBtnLeftDiv");
     const projLstBtnRightDiv = document.createElement("div");
@@ -213,20 +151,18 @@ function projectListNewProjectBtn() {
     const newProjectImgDots = new Image();
     newProjectImgDots.classList.add("newProjImg");
     newProjectImgDots.src = dotsPic;
-
     const inputProjectNameElement =
         document.getElementsByClassName("newProjTextBox")[0];
-
     const projLstNewProjectTxt = document.createElement("span");
     projLstNewProjectTxt.classList.add("navButtonText");
     projLstNewProjectTxt.classList.add("projLstNewProjectTxt");
     projLstNewProjectTxt.textContent = inputProjectNameElement.value;
-
     projLstBtnLeftDiv.append(newProjectImgStripes, projLstNewProjectTxt);
-
     projLstBtnRightDiv.append(newProjectImgDots);
-
     projectListButton.append(projLstBtnLeftDiv, projLstBtnRightDiv);
+
+    projectListButton.addEventListener("click", selectedProject); //add event listener to all project buttons
+
     return projectListButton;
 }
 function isInputNotEmpty(input) {

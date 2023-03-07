@@ -1,14 +1,13 @@
 export class newProjectClass {
-    constructor(projectName, dateWhenSet) {
+    constructor(projectName) {
         this.projectName = projectName;
-        this.dateWhenSet = dateWhenSet;
     }
     get projectName() {
         return this._projectName;
     }
-    get dateWhenSet() {
-        return this._dateWhenSet;
-    }
+    // get endDate() {
+    //     return this._dateWhenSet;
+    // }
 
     set projectName(value) {
         if (value.length < 4) {
@@ -17,14 +16,14 @@ export class newProjectClass {
         }
         this._projectName = value;
     }
-    set dateWhenSet(value) {
-        this._dateWhenSet = value;
-    }
+    // set endDate(value) {
+    //     this._endDate = value;
+    // }
 
     sayHi() {
         alert(this.projectName);
     }
-    sayDate() {
-        alert(this.dateWhenSet);
-    }
+    // sayDate() {
+    //     alert(this.endDate);
+    // }
 }

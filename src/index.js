@@ -25,7 +25,7 @@ import createFooterDiv from "./footer.js";
 import createContentDiv from "./content.js";
 
 function mainContentFunc() {
-    console.log("loading main content");
+    // console.log("loading main content");
     const mainContent = document.createElement("div");
     mainContent.classList.add("mainContent");
     const header = createHeaderDiv();

@@ -11,7 +11,7 @@ export default function createContentDiv() {
 
     const contentHeadingDate = document.createElement("span");
     contentHeadingDate.classList.add("contentHeadingDate");
-    contentHeadingDate.textContent = "All";
+    // contentHeadingDate.textContent = "All";
 
     contentHeading.append(contentHeadingText, contentHeadingDate);
 
